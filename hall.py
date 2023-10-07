@@ -80,9 +80,6 @@ class Hall :
 
 
 
-# while True :
-#     print('Welcome to the Star Cinema.');
-
 hall = Star_Cinema.entryHall(5,5,100);
 
 hall.entry_show("101", "Jawan", datetime.datetime.now());
@@ -90,4 +87,33 @@ hall.entry_show("101", "Jawan", datetime.datetime.now());
 hall.book_seats("101", (1,1));
 hall.view_available_seats("101");
 hall.book_seats("101", (1,1));
+
+while True :
+    print('Welcome to the Star Cinema.');
+    print("Choose your option.");
+    print("1 : Entry Hall");
+    print("2 : Entry Show");
+    print("3 : View Show List");
+    print("4 : View Available Seat");
+    print("5 : Book Seat");
+    print("6 : Exit");
+    print("Go to ", end=" ");
+    x = int(input());
+    
+    match x :
+        case 1 :
+            print('Entry hall');
+        case 2 :
+            print('Entry Show');
+        case 3 :
+            print('View Showlist');
+        case 4 :
+            print('View Seats');
+        case 5 :
+            print('Book Seat');
+        case 6: 
+            print('Process Terminated');
+            break;
+    
+    
 
