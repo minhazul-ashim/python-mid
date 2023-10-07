@@ -12,38 +12,38 @@ class Star_Cinema :
 
 class Hall :
     def __init__(self, rows, cols, hall_no = (100 + len(Star_Cinema._hall_list))) -> None:
-        self._seats = {};
-        self._show_list = [];
-        self._rows = rows;
-        self._cols = cols;
-        self._hall_no = hall_no;
+        self.__seats = {};
+        self.__show_list = [];
+        self.__rows = rows;
+        self.__cols = cols;
+        self.__hall_no = hall_no;
 
     # Method to Entry a show to the Cinema Hall.
     def entry_show(self, id, movie_name, time) :
 
         x = (id, movie_name, time);
-        self._show_list.append(x);
+        self.__show_list.append(x);
 
-        y = [[0]*self._cols for _ in range(self._rows)];
+        y = [[0]*self.__cols for _ in range(self.__rows)];
 
-        for i in range(0,self._rows) :
-            for j in range(0, self._cols) :
+        for i in range(0,self.__rows) :
+            for j in range(0, self.__cols) :
                 y[i][j] = 'Free';
     
-        self._seats[id] = y;
+        self.__seats[id] = y;
     
     # Method to Book Seats in a show.
     def book_seats(self, id, seat) :
         target_show = None;
         x, y = seat;
 
-        if(x >= self._rows or y >= self._cols) :
+        if(x >= self.__rows or y >= self.__cols) :
             print("Invalid Seats");
             return;
     
-        for show in self._show_list :
+        for show in self.__show_list :
             if(show[0] == id) :
-                target_show = self._seats[id];
+                target_show = self.__seats[id];
         
         if(target_show and target_show[x][y] == "Booked") :
             print("Sorry! The Seat is already Booked");
@@ -59,26 +59,26 @@ class Hall :
 
     # Method to view all the shows running in the hall;
     def view_show_list(self) :
-        for show in self._show_list :
+        for show in self.__show_list :
             id, movie_name, time = show;
             print(f'Movie Name: {movie_name}, Show ID: {id}, Time : {time}');
 
     # Method of view all the available seats of a show;
     def view_available_seats(self, id) :
         target_seats = None;
-        for x in self._show_list :
+        for x in self.__show_list :
             show_id, movie_name, time = x;
             if(show_id == id) :
-                target_seats = self._seats[show_id];
-        for i in range(0, self._rows) :
-            for j in range(0, self._cols) :
+                target_seats = self.__seats[show_id];
+        for i in range(0, self.__rows) :
+            for j in range(0, self.__cols) :
                 print(target_seats[i][j], end="\t");
             print('\n');
 
 
     # Representation class for the hall;
     def __repr__(self):
-        print(f'Hall ID is {self._hall_no}, with Total Seats {self._rows * self._cols} and shows running {len(self._show_list)}');
+        print(f'Hall ID is {self.__hall_no}, with Total Seats {self.__rows * self.__cols} and shows running {len(self.__show_list)}');
 
 
 hall = Star_Cinema.entryHall(5,5,100);
@@ -162,5 +162,6 @@ while True :
     elif(n == 3) :
         print("Process Terminated");
         break;
+
 
 
